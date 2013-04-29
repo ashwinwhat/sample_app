@@ -1,7 +1,11 @@
 require 'spec_helper'
 
-describe PagesController do
+describe StaticPagesController do
   render_views
+
+  before(:each) do
+
+  end
 
   describe "GET 'home'" do
     it "should be successful" do
@@ -11,7 +15,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title", :content => "Ruby on Rails is awesome")
+      response.should have_selector("title", :content => "Ruby on Rails Tutorial Sample App | Home")
     end
   end
 
@@ -26,6 +30,18 @@ describe PagesController do
     it "should be successful" do
       get 'about'
       response.should be_success
+    end
+  end
+
+  describe "get 'help'" do
+    it "should be successful" do
+      get 'help'
+      response.should be_success
+    end
+
+    it "should have HELP in the title" do
+      get 'help'
+      response.should have_selector("title",:content => "Help")
     end
   end
 
